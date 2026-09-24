@@ -31,8 +31,8 @@ def ask(system_prompt, question):
                   {"role": "user", "content": question}],
         temperature=0,
     )
-    return response.choices[0].message.content.strip()
-
+    return response.choices[0].message.content.strip()#fetch the content of the first choice in the response 
+#
 if __name__ == "__main__":
     banner("CHAIN-OF-THOUGHT COMPARISON")
     for number, question in enumerate(QUESTIONS, start=1):
