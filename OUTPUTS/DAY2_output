@@ -1,0 +1,122 @@
+(.venv) PS C:\Users\nathi\OneDrive\Desktop\AI_Fluency-1> cd .\Day_2 
+(.venv) PS C:\Users\nathi\OneDrive\Desktop\AI_Fluency-1\Day_2> python .\cot_compare.py
+
+=== CHAIN-OF-THOUGHT COMPARISON | provider: ollama | model: qwen2.5:3b ===
+
+========================================================================
+QUESTION 1: A student takes three courses costing Rs. 12,000, Rs. 18,000 and Rs. 15,000. She gets a 15% scholarship on the total and pays the rest in 4 equal instalments. How much is each instalment?
+
+--- WITHOUT CoT ---
+Rs. 8250 
+
+--- WITH CoT ---
+Step 1: Calculate the total cost of the courses.
+The total cost is the sum of the costs of the three courses.
+Total cost = Rs. 12,000 + Rs. 18,000 + Rs. 15,000 = Rs. 45,000
+
+Step 2: Calculate the scholarship amount.
+The student gets a 15% scholarship on the total cost.
+Scholarship amount = 15% of Rs. 45,000 = 0.15 × Rs. 45,000 = Rs. 6,750
+
+Step 3: Calculate the amount the student needs to pay after the scholarship.
+Amount to be paid = Total cost - Scholarship amount
+Amount to be paid = Rs. 45,000 - Rs. 6,750 = Rs. 38,250
+
+Step 4: Calculate the amount to be paid in each instalment.
+The amount needs to be paid in 4 equal instalments.
+Each instalment = Amount to be paid ÷ 4
+Each instalment = Rs. 38,250 ÷ 4 = Rs. 9,562.50
+
+Final Answer: Rs. 9,562.50 
+
+========================================================================
+QUESTION 2: A lab has 18 computers. In the morning each computer is shared by 2 students, and in the afternoon by 3 students. How many student sittings happen in one day?
+
+--- WITHOUT CoT ---
+36 
+
+--- WITH CoT ---
+Step 1: Calculate the total number of student sitings in the morning.
+In the morning, each of the 18 computers is shared by 2 students. Therefore, the total number of student sitings in the morning is:
+18 computers * 2 students/computer = 36 students
+
+Step 2: Calculate the total number of student sitings in the afternoon.
+In the afternoon, each of the 18 computers is shared by 3 students. Therefore, the total number of student sitings in the afternoon is:
+18 computers * 3 students/computer = 54 students
+
+Step 3: Calculate the total number of student sitings in one day.
+To find the total number of student sitings in one day, we add the number of sitings in the morning and the number of sitings in the afternoon:
+36 students (morning) + 54 students (afternoon) = 90 students
+
+Final Answer: 90 students 
+
+========================================================================
+QUESTION 3: Ravi is taller than Kumar. Kumar is taller than Arun. Priya is shorter than Arun. Who is the tallest and who is the shortest?
+
+--- WITHOUT CoT ---
+Ravi is the tallest and Priya is the shortest. 
+
+--- WITH CoT ---
+Step 1: Analyze the given information.
+- Ravi is taller than Kumar.
+- Kumar is taller than Arun.
+- Priya is shorter than Arun.
+
+Step 2: Combine the information to determine the order of heights.
+- From the first statement, we know Ravi > Kumar.
+- From the second statement, we know Kumar > Arun.
+- Combining these, we get Ravi > Kumar > Arun.
+- The third statement tells us that Priya is shorter than Arun, which means Arun > Priya.
+
+Step 3: Incorporate the third statement into the order.
+- Since Arun > Priya and Ravi > Kumar > Arun, we can conclude Ravi > Kumar > Arun > Priya.
+
+Step 4: Identify the tallest and shortest individuals.
+- The tallest person is Ravi.
+- The shortest person is Priya.
+
+Final Answer: The tallest is Ravi and the shortest is Priya. 
+
+(.venv) PS C:\Users\nathi\OneDrive\Desktop\AI_Fluency-1\Day_2> pyhton .\react_trace.py
+pyhton : The term 'pyhton' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was 
+included, verify that the path is correct and try again.
+At line:1 char:1
++ pyhton .\react_trace.py
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (pyhton:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+(.venv) PS C:\Users\nathi\OneDrive\Desktop\AI_Fluency-1\Day_2> python .\react_trace.py
+QUESTION: Which is cheaper: CS101 and AI202 with a 10% scholarship, or all three courses with a 25% scholarship? By how much? 
+
+--- the agent's actions and observations ---
+   step 1: get_course_fee({'course_code': 'CS101'}) -> 12000
+   step 1: get_course_fee({'course_code': 'AI202'}) -> 18000
+   step 1: calculator({'expression': '0.9 * (CS101 fee + AI202 fee)'}) -> Calculator error: invalid syntax. Perhaps you forgot a comma? (<unknown>, line 1)
+   step 2: get_course_fee({'course_code': 'CS101'}) -> 12000
+   step 2: get_course_fee({'course_code': 'AI202'}) -> 18000
+   step 3: get_course_fee({'course_code': 'CS101'}) -> 12000
+   step 3: get_course_fee({'course_code': 'AI202'}) -> 18000
+   step 3: calculator({'expression': '0.9 * (12000 + 18000)'}) -> 27000.0
+   step 4: calculator({'expression': '12000 + 18000 + 12000 * (1 - 0.25) + 18000 * (1 - 0.25)'}) -> 52500.0
+
+FINAL ANSWER: The total cost for all three courses with a 25% scholarship is ₹52,500.
+
+Now, let's calculate the total cost for just CS101 and AI202 with a 10% scholarship:
+\[ \text{Total cost for CS101 and AI202} = 10800 + 16200 \]
+
+Let's calculate this total cost.
+(.venv) PS C:\Users\nathi\OneDrive\Desktop\AI_Fluency-1\Day_2> python .\self_consistency.py
+
+=== SELF-CONSISTENCY | provider: ollama | model: qwen2.5:3b ===
+
+QUESTION: A student takes three courses costing Rs. 12,000, Rs. 18,000 and Rs. 15,000. She gets a 15% scholarship on the total and pays the rest in 4 equal instalments. How much is each instalment? 
+
+   run 1: Rs. 9,562.50
+   run 2: Rs. 9562.5
+   run 3: Rs. 9,562.50
+   run 4: Rs. 9,562.5
+   run 5: Rs. 9,562.50
+
+Majority answer (3 of 5 runs): Rs. 9,562.50
+(.venv) PS C:\Users\nathi\OneDrive\Desktop\AI_Fluency-1\Day_2> 

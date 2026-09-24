@@ -1,0 +1,84 @@
+(.venv) PS C:\Users\nathi\OneDrive\Desktop\AI_Fluency-1\Day_1> python .\chatbot.py  
+
+=== SYSTEM 1: CHATBOT | provider: ollama | model: qwen2.5:3b ===
+
+Q: What is the fee for AI202?
+A: I'm sorry, but I don't have information about an "AI202" fee. It's possible there might be a typo or this could be related to a specific context or industry that I'm not familiar with. Could you please provide more details or context about what "AI202" refers to? This would help me give you a more accurate answer.
+----------------------------------------------------------------------
+Q: What is the total fee for CS101 and AI202 after a 10% scholarship?
+A: To determine the total fee for CS101 and AI202 after a 10% scholarship, we need to know the original fees for both courses. Let's assume the original fees are as follows:
+
+- CS101: $500
+- AI202: $700
+
+First, we calculate the scholarship amount for each course:
+
+- Scholarship for CS101: \( 10\% \times 500 = 0.10 \times 500 = 50 \)
+- Scholarship for AI202: \( 10\% \times 700 = 0.10 \times 700 = 70 \)
+
+Next, we subtract the scholarship amount from the original fees to find the fees after the scholarship:
+
+- Fee for CS101 after scholarship: \( 500 - 50 = 450 \)
+- Fee for AI202 after scholarship: \( 700 - 70 = 630 \)
+
+Finally, we add the fees after the scholarship to find the total fee:
+
+- Total fee: \( 450 + 630 = 1080 \)
+
+Thus, the total fee for CS101 and AI202 after a 10% scholarship is \(\boxed{1080}\).
+----------------------------------------------------------------------
+Q: Is DS303 more expensive than CS101, and by how much?
+A: To determine if DS303 is more expensive than CS101 and by how much, we would need specific price information for both courses. Without this data, it's impossible tomake a comparison and calculate the difference in cost.
+
+If you can provide the prices of DS303 and CS101, I can help you determine which course is more expensive and calculate the difference.
+----------------------------------------------------------------------
+Q: Write a two-line welcome message for new AI students.
+A: Welcome aboard, new AI students! We are thrilled to have you join our community.
+----------------------------------------------------------------------
+(.venv) PS C:\Users\nathi\OneDrive\Desktop\AI_Fluency-1\Day_1> python .\workflow.py
+
+=== SYSTEM 2: RULE-BASED WORKFLOW (no LLM) ===
+
+Q: What is the fee for AI202?
+A: Fee for AI202: Rs. 18,000
+----------------------------------------------------------------------
+Q: What is the total fee for CS101 and AI202 after a 10% scholarship?
+A: Total fee: Rs. 27,000
+----------------------------------------------------------------------
+Q: Is DS303 more expensive than CS101, and by how much?
+A: Sorry, I do not have a rule for this type of question.
+----------------------------------------------------------------------
+Q: Write a two-line welcome message for new AI students.
+A: Sorry, I can only answer questions about course fees.
+----------------------------------------------------------------------
+(.venv) PS C:\Users\nathi\OneDrive\Desktop\AI_Fluency-1\Day_1> python .\agent.py
+
+=== SYSTEM 3: AI AGENT | provider: ollama | model: qwen2.5:3b ===
+
+Q: What is the fee for AI202?
+   step 1: get_course_fee({'course_code': 'AI202'}) -> 18000
+A: The fee for the AI202 course is 18000 rupees.
+----------------------------------------------------------------------
+Q: What is the total fee for CS101 and AI202 after a 10% scholarship?
+   step 1: get_course_fee({'course_code': 'CS101'}) -> 12000
+   step 1: get_course_fee({'course_code': 'AI202'}) -> 18000
+   step 1: calculator({'expression': '10/100 * (get_course_fee.arguments.course_code.CS101 + get_course_fee.arguments.course_code.AI202)'}) -> Calculator error: Unsupported expression
+   step 2: get_course_fee({'course_code': 'CS101'}) -> 12000
+   step 2: get_course_fee({'course_code': 'AI202'}) -> 18000
+   step 2: calculator({'expression': '10/100 * (get_course_fee.arguments.course_code.CS101 + get_course_fee.arguments.course_code.AI202)'}) -> Calculator error: Unsupported expression
+   step 3: get_course_fee({'course_code': 'CS101'}) -> 12000
+   step 3: get_course_fee({'course_code': 'AI202'}) -> 18000
+   step 3: calculator({'expression': '1000 + 2000'}) -> 3000
+   step 4: get_course_fee({'course_code': 'CS101'}) -> 12000
+   step 5: calculator({'expression': '12000 + 18000'}) -> 30000
+A: The total fee for the courses CS101 and AI202 after applying a 10% scholarship is 30000 rupees.
+----------------------------------------------------------------------
+Q: Is DS303 more expensive than CS101, and by how much?
+   step 1: get_course_fee({'course_code': 'DS303'}) -> 15000
+   step 1: get_course_fee({'course_code': 'CS101'}) -> 12000
+A: DS303 fee is 15000 and CS101 fee is 12000. Therefore, DS303 is more expensive than CS101 by 3000 rupees.
+----------------------------------------------------------------------
+Q: Write a two-line welcome message for new AI students.
+A: No suitable function found for the task.
+----------------------------------------------------------------------
+(.venv) PS C:\Users\nathi\OneDrive\Desktop\AI_Fluency-1\Day_1> 
